@@ -1,20 +1,44 @@
+def toNumber(input: str) -> int:
+    try:
+        result = 0
+        arabNumbers = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8, "IХ": 9, "Х": 10}
+        if arabNumbers.get(input) is not None:
+            result = arabNumbers[input]
+        elif int(input) in range(1, 11):
+            result = int(input)    
+        else:
+            raise ValueError()
+    except ValueError:
+        exit("throws Exception")
+    else:
+        return result
+
+def toOperation(input: str) -> str:
+    if input in ["+", "-", "*", "/"]:
+        return input
+    else:
+        exit("throws Exception")
+
 def main(input: str) -> int:
     try:
-        result      = 0
+        result  = 0
+        numberA = 0
+        numberB = 0
+        operation = ""
+
         inputList   = input.split(" ", 2)
-        numberA     = int(inputList[0])
-        numberB     = int(inputList[2])
-        operation   = str(inputList[1])
-        
-        if numberA in range(1, 11) and numberB in range(1, 11) and operation in ["+", "-", "*", "/"]:
-            if   operation == "+": result = numberA + numberB
-            elif operation == "-": result = numberA - numberB
-            elif operation == "*": result = numberA * numberB
-            elif operation == "/": result = numberA / numberB
-        else:
-            raise NameError('throws Exception')
-    except (ValueError, ZeroDivisionError, NameError) as err:
-        exit(err)
+
+        numberA     = toNumber(inputList[0])
+        numberB     = toNumber(inputList[2])
+        operation   = toOperation(inputList[1])
+
+        if   operation == "+": result = numberA + numberB
+        elif operation == "-": result = numberA - numberB
+        elif operation == "*": result = numberA * numberB
+        elif operation == "/": result = numberA / numberB
+
+    except ValueError:
+        exit("throws Exception")
     else:
         return int(result)
 
