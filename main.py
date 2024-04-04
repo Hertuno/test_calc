@@ -21,12 +21,14 @@ def toOperation(input: str) -> str:
 
 def main(input: str) -> int:
     try:
-        result  = 0
-        numberA = 0
-        numberB = 0
+        result    = 0
+        numberA   = 0
+        numberB   = 0
         operation = ""
 
-        inputList   = input.split(" ", 2)
+        inputList = input.split(" ")
+        if len(inputList) != 3:
+            exit("throws Exception")
 
         numberA     = toNumber(inputList[0])
         numberB     = toNumber(inputList[2])
@@ -43,4 +45,4 @@ def main(input: str) -> int:
         return int(result)
 
 while True:
-    print(main(input("Введите выражение: ")))
+    print(main(input()))
