@@ -39,7 +39,7 @@ def main(input: str) -> str:
         elif operation == "*": result = numberA * numberB
         elif operation == "/": result = numberA / numberB
 
-        return str(result)
+        return str(int(result))
     
     except ValueError:
         exit("throws Exception")        
