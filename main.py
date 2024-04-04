@@ -19,7 +19,7 @@ def toOperation(input: str) -> str:
     else:
         exit("throws Exception")
 
-def main(input: str) -> int:
+def main(input: str) -> str:
     try:
         result    = 0
         numberA   = 0
@@ -39,10 +39,10 @@ def main(input: str) -> int:
         elif operation == "*": result = numberA * numberB
         elif operation == "/": result = numberA / numberB
 
+        return str(result)
+    
     except ValueError:
-        exit("throws Exception")
-    else:
-        return int(result)
+        exit("throws Exception")        
 
 while True:
     print(main(input()))
